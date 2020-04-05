@@ -22,12 +22,15 @@ class BasicNeeds:
         # checking log folder first as there's all further messages will be stored
         self.fn_validate_single_value(os.path.dirname(input_parameters.output_log_file), 'folder',
                                       'log file')
+        self.fn_validate_single_value(os.path.dirname(input_parameters.input_directory),
+                                      'folder', 'input directory')
         # checking script specific inputs
         if input_script == 'merger':
-            self.fn_validate_single_value(os.path.dirname(input_parameters.input_directory),
-                                          'folder', 'input directory')
             self.fn_validate_single_value(os.path.dirname(input_parameters.output_file),
                                           'folder', 'output file')
+        elif input_script == 'rename_or_move':
+            self.fn_validate_single_value(os.path.dirname(input_parameters.output_directory),
+                                          'folder', 'output directory')
 
     def fn_final_message(self, local_logger, log_file_name, performance_in_seconds):
         total_time_string = str(timedelta(seconds=performance_in_seconds))

@@ -43,8 +43,7 @@ class DataManipulator:
         timmer.stop()
         return combined_csv
 
-    def rename_or_move_files(self, local_logger, timmer, source_folder, match_pattern,
-                             destination_folder):
+    def fn_move_files(self, local_logger, timmer, source_folder, match_pattern, destination_folder):
         csv_file_names = self.fn_build_relevant_file_list(self, local_logger, timmer,
                                                           source_folder, match_pattern)
         timmer.start()

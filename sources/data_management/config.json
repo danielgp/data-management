@@ -36,6 +36,29 @@
                 "option_required"       : false,
                 "option_sample_value"   : "csv-field-separator-character"
             }
+        },
+        "mover": {
+            "d": {
+                "default_value"         : "",
+                "option_description"    : "Input directory is %s",
+                "option_long"           : "input-directory",
+                "option_required"       : true,
+                "option_sample_value"   : "input-directory-name"
+            },
+            "p": {
+                "default_value"         : "",
+                "option_description"    : "Input file name pattern is %s",
+                "option_long"           : "input-file-pattern",
+                "option_required"       : true,
+                "option_sample_value"   : "input-file-name-pattern"
+            },
+            "o": {
+                "default_value"         : "",
+                "option_description"    : "Output directory is %s",
+                "option_long"           : "output-directory",
+                "option_required"       : true,
+                "option_sample_value"   : "output-directory-name"
+            }
         }
     }
 }
