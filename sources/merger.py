@@ -3,10 +3,10 @@ import os
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from data_management.BasicNeeds import BasicNeeds
-from data_management.CommandLineArgumentsManagement import CommandLineArgumentsManagement
-from data_management.LoggingNeeds import LoggingNeeds
-from data_management.DataManipulator import DataManipulator
+from data_management import BasicNeeds
+from data_management import CommandLineArgumentsManagement
+from data_management import LoggingNeeds
+from data_management import DataManipulator
 
 # get current script name
 current_script_name = os.path.basename(__file__).replace('.py', '')
