@@ -49,6 +49,15 @@ Installation can be completed in few steps as follows:
     - <content_within_html_tags> = variables to be replaced with user values relevant strings
     - single vertical pipeline = separator for alternative options
 
+### Moving based on a matching pattern from a given folder to another folder
+```
+    $ python <local_path_of_this_package>/sources/mover.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --output-directory <output_directory_full_path> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+```
+- conventions used:
+    - (content_within_round_parenthesis) = optional
+    - <content_within_html_tags> = variables to be replaced with user values relevant strings
+    - single vertical pipeline = separator for alternative options
+
 ## Change Log / Releases detailed
 
 see [CHANGE_LOG.md](CHANGE_LOG.md)

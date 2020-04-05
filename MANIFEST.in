@@ -1,1 +1,3 @@
+include sources/*.py
 include data_management/*.json
+include data_management/*.py
