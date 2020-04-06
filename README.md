@@ -21,8 +21,10 @@ Installation can be completed in few steps as follows:
 >> For Windows you can do so from [Git for Windows](https://github.com/git-for-windows/git/releases/);
 * Download this project from Github:
 ```
-    $ git clone https://github.com/danielgp/data-management
+    $ git clone https://github.com/danielgp/data-management <local_folder_on_your_computer>
 ```
+- conventions used:
+    - <content_within_html_tags> = variables to be replaced with user values relevant strings
 * Create a Python Virtual Environment using following command executed from project root folder:
 ```
     $ python -m venv virtual_environment/
@@ -38,7 +40,27 @@ Installation can be completed in few steps as follows:
 ```
 
 
+## Maintaining package up-to-date
+
+Once the package is installed is quite important to keep up with lateste releases as such are adressing important code improvments and potential security issues, and this can be achieved by following command:
+```
+    $ git --work-tree=<local_folder_on_your_computer> --git-dir=<local_folder_on_your_computer>/.git/ --no-pager pull origin master
+```
+- conventions used:
+    - <content_within_html_tags> = variables to be replaced with user values relevant strings
+
+
 ## Usage
+
+
+### Filter 
+```
+    $ python <local_path_of_this_package>/sources/filter.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --csv-field-separator ","|";"|"|" --filter-expression <json_filter_expression> --output-directory <full_path_and_file_base_name_to_generated_file> --output-relative-file <relative_file_name_to_store_filtered_content> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+```
+- conventions used:
+    - (content_within_round_parenthesis) = optional
+    - <content_within_html_tags> = variables to be replaced with user values relevant strings
+    - single vertical pipeline = separator for alternative options
 
 ### Merging CSV files based on a matching pattern within a given folder to a single CSV file
 ```

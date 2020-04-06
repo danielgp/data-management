@@ -1,5 +1,9 @@
 # Change Log for Data Management package
 
+
+## Version 0.3.1 release on 2020-04-06
+- bringing documentation up-to-date;
+
 ## Version 0.3.0 release on 2020-04-06
 - added feature to filter CSV file based on JSON expression given rule;
 
