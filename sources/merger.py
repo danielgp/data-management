@@ -3,10 +3,8 @@ import os
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from data_management import BasicNeeds
-from data_management import CommandLineArgumentsManagement
-from data_management import LoggingNeeds
-from data_management import DataManipulator
+from sources.data_management import CommandLineArgumentsManagement, DataManipulator, BasicNeeds, \
+    LoggingNeeds
 
 # get current script name
 current_script_name = os.path.basename(__file__).replace('.py', '')
@@ -42,7 +40,7 @@ if __name__ == '__main__':
                                                               relevant_files_list,
                                                               parameters_in.csv_field_separator)
     # store data frame into single CSV file
-    c_dm.fn_store_data_frame_to_file(working_data_frame, parameters_in.output_file,
+    c_dm.fn_store_data_frame_to_file(c_ln.logger, t, working_data_frame, parameters_in.output_file,
                                      parameters_in.csv_field_separator)
     # store statistics about output file
     c_bn.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')

@@ -1,4 +1,4 @@
-# Data manipulation package
+# Data Management package
 
 
 ## What is this repository for?
@@ -21,7 +21,7 @@ Installation can be completed in few steps as follows:
 >> For Windows you can do so from [Git for Windows](https://github.com/git-for-windows/git/releases/);
 * Download this project from Github:
 ```
-    $ git clone https://github.com/danielgp/tableau-hyper-management
+    $ git clone https://github.com/danielgp/data-management
 ```
 * Create a Python Virtual Environment using following command executed from project root folder:
 ```

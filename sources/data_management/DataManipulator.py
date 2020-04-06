@@ -11,6 +11,32 @@ import pandas as pd
 
 class DataManipulator:
 
+    def fn_apply_query_to_data_frame(self, local_logger, timmer, data_frame, extract_params):
+        timmer.start()
+        if extract_params['filter_to_apply'] == 'equal':
+            local_logger.debug('Will retain only values equal with "'
+                               + extract_params['filter_values'] + '" within the field "'
+                               + extract_params['column_to_filter'] + '"')
+            query_expression = '`' + extract_params['column_to_filter'] + '` == "' \
+                               + extract_params['filter_values'] + '"'
+        elif extract_params['filter_to_apply'] == 'different':
+            local_logger.debug('Will retain only values different than "'
+                               + extract_params['filter_values'] + '" within the field "'
+                               + extract_params['column_to_filter'] + '"')
+            query_expression = '`' + extract_params['column_to_filter'] + '` != "' \
+                               + extract_params['filter_values'] + '"'
+        elif extract_params['filter_to_apply'] == 'multiple_match':
+            local_logger.debug('Will retain only values equal with "'
+                               + extract_params['filter_values'] + '" within the field "'
+                               + extract_params['column_to_filter'] + '"')
+            query_expression = '`' + extract_params['column_to_filter'] + '` in ["' \
+                               + '", "'.join(extract_params['filter_values'].values()) \
+                               + '"]'
+        local_logger.debug('Query expression to apply is: ' + query_expression)
+        data_frame.query(query_expression, inplace = True)
+        timmer.stop()
+        return data_frame
+
     def fn_build_relevant_file_list(self, local_logger, timmer, in_folder, matching_pattern):
         timmer.start()
         local_logger.info('Will list all files within ' + in_folder
@@ -53,9 +79,13 @@ class DataManipulator:
             local_logger.info('File ' + current_file + ' has just been renamed as ' + new_file_name)
         timmer.stop()
 
-    def fn_store_data_frame_to_file(self, input_data_frame, destination_file_name, csv_delimiter):
+    def fn_store_data_frame_to_file(self, local_logger, timmer, input_data_frame,
+                                    destination_file_name, csv_delimiter):
+        timmer.start()
         input_data_frame.to_csv(path_or_buf = destination_file_name,
-                                sep = ';',
+                                sep = csv_delimiter,
                                 header = True,
                                 index = False,
                                 encoding = 'utf-8')
+        local_logger.info('Data frame has just been saved to file "' + destination_file_name + '"')
+        timmer.stop()

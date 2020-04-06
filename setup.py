@@ -41,11 +41,10 @@ setup(
     long_description = long_description_readme,
     long_description_content_type = 'text/markdown',
     name = 'data-management',
-    packages = find_packages('sources'),
+    packages = find_packages('data_management'),
     package_data = {
-        'sources': [
-            '*.json',
-            '*.md'
+        'data_management': [
+            '*.json'
         ]
     },
     project_urls = {
@@ -55,5 +54,5 @@ setup(
     },
     python_requires = '>=3.6',
     url = this_package_website + '/releases',  # project home page, if any
-    version = '0.2.2',
+    version = '0.3.0',
 )
