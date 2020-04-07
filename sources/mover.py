@@ -6,8 +6,10 @@ import os
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from sources.data_management import CommandLineArgumentsManagement, DataManipulator, BasicNeeds, \
-    LoggingNeeds
+from data_management.BasicNeeds import BasicNeeds
+from data_management.CommandLineArgumentsManagement import CommandLineArgumentsManagement
+from data_management.LoggingNeeds import LoggingNeeds
+from data_management.DataManipulator import DataManipulator
 
 # get current script name
 current_script_name = os.path.basename(__file__).replace('.py', '')
@@ -35,9 +37,7 @@ if __name__ == '__main__':
     # instantiate Basic Needs class
     c_dm = DataManipulator()
     # making the actual rename or move
-    c_dm.fn_rename_or_move_files(c_ln.logger, t, parameters_in.input_directory,
-                                 parameters_in.input_file_pattern, parameters_in.output_directory)
-    # store statistics about output file
-    c_bn.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
+    c_dm.fn_move_files(c_ln.logger, t, parameters_in.input_directory, 
+                       parameters_in.input_file_pattern, parameters_in.output_directory)
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file, t.timers.total('dm_mover'))
