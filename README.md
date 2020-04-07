@@ -31,7 +31,7 @@ Installation can be completed in few steps as follows:
 ```
 * Upgrade pip (PIP is a package manager for Python packages) and SetupTools using following command executed from newly created virtual environment and Scripts sub-folder:
 ```
-    $ python -m pip install --upgrade pip --user
+    $ python -m pip install --upgrade pip
     $ pip install --upgrade setuptools --user
 ```
 * Install project prerequisites using following command executed from project root folder:
@@ -40,9 +40,9 @@ Installation can be completed in few steps as follows:
 ```
 
 
-## Maintaining package up-to-date
+## Maintaining local package up-to-date
 
-Once the package is installed is quite important to keep up with lateste releases as such are adressing important code improvments and potential security issues, and this can be achieved by following command:
+Once the package is installed is quite important to keep up with latest releases as such are addressing important code improvements and potential security issues, and this can be achieved by following command:
 ```
     $ git --work-tree=<local_folder_on_your_computer> --git-dir=<local_folder_on_your_computer>/.git/ --no-pager pull origin master
 ```
@@ -64,7 +64,7 @@ Once the package is installed is quite important to keep up with lateste release
 
 ### Merging CSV files based on a matching pattern within a given folder to a single CSV file
 ```
-    $ python <local_path_of_this_package>/sources/merger.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.hyper) (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ python <local_path_of_this_package>/sources/merger.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.csv) (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
