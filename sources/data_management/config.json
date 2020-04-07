@@ -109,6 +109,13 @@
                 "option_long"           : "output-directory",
                 "option_required"       : true,
                 "option_sample_value"   : "output-directory-name"
+            },
+            "l": {
+                "default_value"         : "None",
+                "option_description"    : "Output log file name is %s",
+                "option_long"           : "output-log-file",
+                "option_required"       : false,
+                "option_sample_value"   : "output-log-file-name"
             }
         }
     }
