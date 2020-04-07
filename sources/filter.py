@@ -1,3 +1,6 @@
+"""
+Facilitates filtering CSV files based on a carefully constructed JSON expression
+"""
 import ast
 # package to facilitate operating system operations
 import os

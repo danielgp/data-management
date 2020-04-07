@@ -1,3 +1,6 @@
+"""
+Facilitates moving files from a specified directory and matching pattern to a destination directory
+"""
 # package to facilitate operating system operations
 import os
 # useful methods to measure time performance by small pieces of code
