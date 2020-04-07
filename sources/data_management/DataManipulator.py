@@ -13,6 +13,7 @@ class DataManipulator:
 
     def fn_apply_query_to_data_frame(self, local_logger, timmer, data_frame, extract_params):
         timmer.start()
+        query_expression = ''
         if extract_params['filter_to_apply'] == 'equal':
             local_logger.debug('Will retain only values equal with "'
                                + extract_params['filter_values'] + '" within the field "'
