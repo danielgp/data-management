@@ -71,7 +71,7 @@ class DataManipulator:
         return combined_csv
 
     def fn_move_files(self, local_logger, timmer, source_folder, match_pattern, destination_folder):
-        csv_file_names = self.fn_build_relevant_file_list(self, local_logger, timmer,
+        csv_file_names = self.fn_build_relevant_file_list(local_logger, timmer,
                                                           source_folder, match_pattern)
         timmer.start()
         for current_file in csv_file_names:
