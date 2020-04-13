@@ -4,10 +4,12 @@ setup - ensures proper package setup
 This file is ensuring proper package setup is performed to ensure all prerequisites are satisfied 
 and correct execution is possible
 """
+# package to handle files/folders and related metadata/operations
+import os.path
 # facilitate dependencies management
 from setuptools import setup, find_packages
 
-with open('README.md', 'r') as fh:
+with open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r') as fh:
     long_description_readme = fh.read()
 
 this_package_website = 'https://github.com/danielgp/data-management'
