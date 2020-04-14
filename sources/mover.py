@@ -36,8 +36,15 @@ if __name__ == '__main__':
                                     c_bn.cfg_dtls['input_options']['mover'], parameters_in)
     # instantiate Basic Needs class
     c_dm = DataManipulator()
+    # build list of file based on pattern provided
+    csv_file_names = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
+                                                      parameters_in.input_directory,
+                                                      parameters_in.input_file_pattern)
+    # exposing statistic for each file identified
+    c_bn.fn_store_file_statistics(c_ln.logger, t, csv_file_names, 'Input')
     # making the actual rename or move
-    c_dm.fn_move_files(c_ln.logger, t, parameters_in.input_directory, 
-                       parameters_in.input_file_pattern, parameters_in.output_directory)
+    new_files = c_dm.fn_move_files(c_ln.logger, t, csv_file_names, parameters_in.output_directory)
+    # exposing statistic for each file identified
+    c_bn.fn_store_file_statistics(c_ln.logger, t, csv_file_names, 'Output')
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file, t.timers.total('dm_mover'))
