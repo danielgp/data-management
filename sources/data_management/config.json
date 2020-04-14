@@ -82,19 +82,12 @@
             }
         },
         "mover": {
-            "d": {
+            "i": {
                 "default_value"         : "",
-                "option_description"    : "Input directory is %s",
-                "option_long"           : "input-directory",
+                "option_description"    : "Input file name (simple or with matching pattern) is %s",
+                "option_long"           : "input-file",
                 "option_required"       : true,
-                "option_sample_value"   : "input-directory-name"
-            },
-            "p": {
-                "default_value"         : "",
-                "option_description"    : "Input file name pattern is %s",
-                "option_long"           : "input-file-pattern",
-                "option_required"       : true,
-                "option_sample_value"   : "input-file-name-pattern"
+                "option_sample_value"   : "input-file-name"
             },
             "o": {
                 "default_value"         : "",

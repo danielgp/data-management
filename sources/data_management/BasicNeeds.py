@@ -30,8 +30,6 @@ class BasicNeeds:
             self.fn_validate_single_value(os.path.dirname(input_parameters.output_file),
                                           'folder', 'output file')
         elif input_script in ('filter', 'rename_or_move'):
-            self.fn_validate_single_value(os.path.dirname(input_parameters.input_directory),
-                                          'folder', 'input directory')
             self.fn_validate_single_value(os.path.dirname(input_parameters.output_directory),
                                           'folder', 'output directory')
 

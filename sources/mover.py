@@ -37,9 +37,7 @@ if __name__ == '__main__':
     # instantiate Basic Needs class
     c_dm = DataManipulator()
     # build list of file based on pattern provided
-    csv_file_names = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
-                                                      parameters_in.input_directory,
-                                                      parameters_in.input_file_pattern)
+    csv_file_names = c_dm.build_file_list(c_ln.logger, t, parameters_in.input_file)
     # exposing statistic for each file identified
     c_bn.fn_store_file_statistics(c_ln.logger, t, csv_file_names, 'Input')
     # making the actual rename or move

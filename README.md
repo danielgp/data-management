@@ -73,7 +73,7 @@ Once the package is installed is quite important to keep up with latest releases
 
 ### Moving based on a matching pattern from a given folder to another folder
 ```
-    $ python <local_path_of_this_package>/sources/mover.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --output-directory <output_directory_full_path> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ python <local_path_of_this_package>/sources/mover.py  --input-file <input_file_name__specific_or_with_pattern> --output-directory <output_directory_full_path> (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
