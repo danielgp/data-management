@@ -37,9 +37,7 @@ if __name__ == '__main__':
     # instantiate Data Manipulator class
     c_dm = DataManipulator()
     # loading from a specific folder all files matching a given pattern into a file list
-    relevant_files_list = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
-                                                           parameters_in.input_directory,
-                                                           parameters_in.input_file_pattern)
+    relevant_files_list = c_dm.build_file_list(c_ln.logger, t, parameters_in.input_file)
     # exposing statistic for each file identified
     c_bn.fn_store_file_statistics(c_ln.logger, t, relevant_files_list, 'Input')
     # loading from a specific folder all files matching a given pattern into a data frame

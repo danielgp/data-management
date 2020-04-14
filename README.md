@@ -64,7 +64,7 @@ Once the package is installed is quite important to keep up with latest releases
 
 ### Merging CSV files based on a matching pattern within a given folder to a single CSV file
 ```
-    $ python <local_path_of_this_package>/sources/merger.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.csv) (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ python <local_path_of_this_package>/sources/merger.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.csv) (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
