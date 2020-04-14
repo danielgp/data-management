@@ -1,33 +1,12 @@
 {
     "input_options": {
-        "filter": {
-            "d": {
+        "columns_eliminator": {
+            "i": {
                 "default_value"         : "",
-                "option_description"    : "Input directory is %s",
-                "option_long"           : "input-directory",
+                "option_description"    : "Input file name (simple or with matching pattern) is %s",
+                "option_long"           : "input-file",
                 "option_required"       : true,
-                "option_sample_value"   : "input-directory-name"
-            },
-            "e": {
-                "default_value"         : "",
-                "option_description"    : "Filter expression is %s",
-                "option_long"           : "filter-expression",
-                "option_required"       : true,
-                "option_sample_value"   : "filter-expression-json"
-            },
-            "p": {
-                "default_value"         : "",
-                "option_description"    : "Input file name pattern is %s",
-                "option_long"           : "input-file-pattern",
-                "option_required"       : true,
-                "option_sample_value"   : "input-file-name-pattern"
-            },
-            "l": {
-                "default_value"         : "None",
-                "option_description"    : "Output log file name is %s",
-                "option_long"           : "output-log-file",
-                "option_required"       : false,
-                "option_sample_value"   : "output-log-file-name"
+                "option_sample_value"   : "input-file-name"
             },
             "s": {
                 "default_value"         : ",",
@@ -36,19 +15,49 @@
                 "option_required"       : false,
                 "option_sample_value"   : "csv-field-separator-character"
             },
-            "o": {
+            "c": {
                 "default_value"         : "",
-                "option_description"    : "Output directory is %s",
-                "option_long"           : "output-directory",
+                "option_description"    : "Columns to eliminate JSON expression is %s",
+                "option_long"           : "columns-to-eliminate-expression",
                 "option_required"       : true,
-                "option_sample_value"   : "output-directory-name"
+                "option_sample_value"   : "columns-to-eliminate-expression-json"
             },
-            "f": {
+            "l": {
+                "default_value"         : "None",
+                "option_description"    : "Output log file name is %s",
+                "option_long"           : "output-log-file",
+                "option_required"       : false,
+                "option_sample_value"   : "output-log-file-name"
+            }
+        },
+        "filter": {
+            "i": {
                 "default_value"         : "",
-                "option_description"    : "Output relative file name is %s",
-                "option_long"           : "output-relative-file",
+                "option_description"    : "Input file name (simple or with matching pattern) is %s",
+                "option_long"           : "input-file",
                 "option_required"       : true,
-                "option_sample_value"   : "output-relative-file-name"
+                "option_sample_value"   : "input-file-name"
+            },
+            "s": {
+                "default_value"         : ",",
+                "option_description"    : "CSV file separator is %s",
+                "option_long"           : "csv-field-separator",
+                "option_required"       : false,
+                "option_sample_value"   : "csv-field-separator-character"
+            },
+            "e": {
+                "default_value"         : "",
+                "option_description"    : "Filter expression is %s",
+                "option_long"           : "filter-expression",
+                "option_required"       : true,
+                "option_sample_value"   : "filter-expression-json"
+            },
+            "l": {
+                "default_value"         : "None",
+                "option_description"    : "Output log file name is %s",
+                "option_long"           : "output-log-file",
+                "option_required"       : false,
+                "option_sample_value"   : "output-log-file-name"
             }
         },
         "merger": {
@@ -58,6 +67,13 @@
                 "option_long"           : "input-file",
                 "option_required"       : true,
                 "option_sample_value"   : "input-file-name"
+            },
+            "s": {
+                "default_value"         : ",",
+                "option_description"    : "CSV file separator is %s",
+                "option_long"           : "csv-field-separator",
+                "option_required"       : false,
+                "option_sample_value"   : "csv-field-separator-character"
             },
             "o": {
                 "default_value"         : "",
@@ -73,13 +89,6 @@
                 "option_required"       : false,
                 "option_sample_value"   : "output-log-file-name"
             },
-            "s": {
-                "default_value"         : ",",
-                "option_description"    : "CSV file separator is %s",
-                "option_long"           : "csv-field-separator",
-                "option_required"       : false,
-                "option_sample_value"   : "csv-field-separator-character"
-            }
         },
         "mover": {
             "i": {

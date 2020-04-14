@@ -38,28 +38,25 @@ if __name__ == '__main__':
     # instantiate Basic Needs class
     c_dm = DataManipulator()
     # build a list of file based on provided file pattern applied to given input directory
-    relevant_files = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
-                                                      parameters_in.input_directory,
-                                                      parameters_in.input_file_pattern)
+    relevant_files = c_dm.build_file_list(c_ln.logger, t, parameters_in.input_file)
     # store statistics about input files
     c_bn.fn_store_file_statistics(c_ln.logger, t, relevant_files, 'Input')
-    # load all relevant files into a single data frame
-    relevant_data_frame = c_dm.fn_load_file_list_to_data_frame(c_ln.logger, t, relevant_files,
-                                                               parameters_in.csv_field_separator)
     # build relevant filter dictionary based on an input JSON expression
     relevant_filters = ast.literal_eval(parameters_in.filter_expression)
-    # perform the filter logic
-    resulted_data_frame = c_dm.fn_apply_query_to_data_frame(c_ln.logger, t, relevant_data_frame, {
-        'column_to_filter': relevant_filters['column_to_filter'],
-        'filter_to_apply': relevant_filters['filter_to_apply'],
-        'filter_values': relevant_filters['filter_values'],
-    })
-    # storing resulted data frame into a local file
-    c_dm.fn_store_data_frame_to_file(c_ln.logger, t, resulted_data_frame,
-                                     parameters_in.output_directory
-                                     + parameters_in.output_relative_file,
-                                     parameters_in.csv_field_separator)
-    # store statistics about output file
-    c_bn.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
+    for current_file in relevant_files:
+        # load all relevant files into a single data frame
+        df = c_dm.fn_load_file_list_to_data_frame(c_ln.logger, t, current_file,
+                                                  parameters_in.csv_field_separator)
+        # perform the filter logic
+        resulted_data_frame = c_dm.fn_apply_query_to_data_frame(c_ln.logger, t, df, {
+            'column_to_filter': relevant_filters['column_to_filter'],
+            'filter_to_apply': relevant_filters['filter_to_apply'],
+            'filter_values': relevant_filters['filter_values'],
+        })
+        # storing resulted data frame into a local file
+        c_dm.fn_store_data_frame_to_file(c_ln.logger, t, resulted_data_frame, current_file,
+                                         parameters_in.csv_field_separator)
+        # store statistics about output file
+        c_bn.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Filtered')
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file, t.timers.total('dm_filter'))

@@ -55,7 +55,7 @@ Once the package is installed is quite important to keep up with latest releases
 
 ### Filter 
 ```
-    $ python <local_path_of_this_package>/sources/filter.py --input-directory <input_directory_full_path> --input-file-pattern "*.csv" --csv-field-separator ","|";"|"|" --filter-expression <json_filter_expression> --output-directory <full_path_and_file_base_name_to_generated_file> --output-relative-file <relative_file_name_to_store_filtered_content> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ python <local_path_of_this_package>/sources/filter.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --filter-expression <json_filter_expression> (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
