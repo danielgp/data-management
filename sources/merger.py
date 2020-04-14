@@ -40,6 +40,8 @@ if __name__ == '__main__':
     relevant_files_list = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
                                                            parameters_in.input_directory,
                                                            parameters_in.input_file_pattern)
+    # exposing statistic for each file identified
+    c_bn.fn_store_file_statistics(c_ln.logger, t, relevant_files_list, 'Input')
     # loading from a specific folder all files matching a given pattern into a data frame
     working_data_frame = c_dm.fn_load_file_list_to_data_frame(c_ln.logger, t,
                                                               relevant_files_list,

@@ -41,6 +41,8 @@ if __name__ == '__main__':
     relevant_files = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
                                                       parameters_in.input_directory,
                                                       parameters_in.input_file_pattern)
+    # store statistics about input files
+    c_bn.fn_store_file_statistics(c_ln.logger, t, relevant_files, 'Input')
     # load all relevant files into a single data frame
     relevant_data_frame = c_dm.fn_load_file_list_to_data_frame(c_ln.logger, t, relevant_files,
                                                                parameters_in.csv_field_separator)
