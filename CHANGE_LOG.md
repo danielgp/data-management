@@ -1,6 +1,10 @@
 # Change Log for Data Management package
 
 
+## Version 0.4.0 release on 2020-04-14
+- new script named columns_eliminator has been added to facilitate elimination of a single or multiple columns from a single or multiple CSV files (is specified columns does not exist in one or multiple files no error will be generated and files will be overwritten if at least one columns specified to be removed has been found); 
+- filter, merger and mover are now accepting either a specific input file or a match pattern based on which multiple files will be considered;
+
 ## Version 0.3.5 release on 2020-04-14
 - mover is now capable of overwrite if file already exists, instead of failing;
 

@@ -31,12 +31,12 @@ Installation can be completed in few steps as follows:
 ```
 * Upgrade pip (PIP is a package manager for Python packages) and SetupTools using following command executed from newly created virtual environment and Scripts sub-folder:
 ```
-    $ python -m pip install --upgrade pip
-    $ pip install --upgrade setuptools --user
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) -m pip install --upgrade pip
+    $ <local_path_of_this_package>/virtual_environment/Scripts/pip(.exe) install --upgrade setuptools --user
 ```
 * Install project prerequisites using following command executed from project root folder:
 ```
-    $ python setup.py install
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/setup.py install
 ```
 
 
@@ -53,9 +53,18 @@ Once the package is installed is quite important to keep up with latest releases
 ## Usage
 
 
+### Columns Eliminator 
+```
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/sources/columns_eliminator.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --columns-to-eliminate-expression <json_list_of_columns_to_eliminate> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+```
+- conventions used:
+    - (content_within_round_parenthesis) = optional
+    - <content_within_html_tags> = variables to be replaced with user values relevant strings
+    - single vertical pipeline = separator for alternative options
+
 ### Filter 
 ```
-    $ python <local_path_of_this_package>/sources/filter.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --filter-expression <json_filter_expression> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/sources/filter.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --filter-expression <json_filter_expression> (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
@@ -64,7 +73,7 @@ Once the package is installed is quite important to keep up with latest releases
 
 ### Merging CSV files based on a matching pattern within a given folder to a single CSV file
 ```
-    $ python <local_path_of_this_package>/sources/merger.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.csv) (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/sources/merger.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --output-file <full_path_and_file_base_name_to_generated_file>(.csv) (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
@@ -73,7 +82,7 @@ Once the package is installed is quite important to keep up with latest releases
 
 ### Moving based on a matching pattern from a given folder to another folder
 ```
-    $ python <local_path_of_this_package>/sources/mover.py  --input-file <input_file_name__specific_or_with_pattern> --output-directory <output_directory_full_path> (--output-log-file <full_path_and_file_name_to_log_running_details>)
+    $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/sources/mover.py  --input-file <input_file_name__specific_or_with_pattern> --output-directory <output_directory_full_path> (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
 - conventions used:
     - (content_within_round_parenthesis) = optional
