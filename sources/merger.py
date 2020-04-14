@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # reflect title and input parameters given values in the log
     c_clam.listing_parameter_values(c_ln.logger, t, 'Data Merger',
                                     c_bn.cfg_dtls['input_options']['merger'], parameters_in)
-    # instantiate Basic Needs class
+    # instantiate Data Manipulator class
     c_dm = DataManipulator()
     # loading from a specific folder all files matching a given pattern into a file list
     relevant_files_list = c_dm.fn_build_relevant_file_list(c_ln.logger, t,
