@@ -1,6 +1,9 @@
 # Change Log for Data Management package
 
 
+## Version 0.3.5 release on 2020-04-14
+- mover is now capable of overwrite if file already exists, instead of failing;
+
 ## Version 0.3.4 release on 2020-04-07
 - ensured README file is properly recognized within same directory sa setup script;
 - internal code tweak (switch to relative package name);
