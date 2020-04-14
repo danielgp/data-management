@@ -1,6 +1,10 @@
 # Change Log for Data Management package
 
 
+## Version 0.3.4 release on 2020-04-07
+- ensured README file is properly recognized within same directory sa setup script;
+- internal code tweak (switch to relative package name);
+
 ## Version 0.3.3 release on 2020-04-07
 - added an optional log parameter to mover as well;
 - internal code tweak (switch to relative package name);
