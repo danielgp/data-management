@@ -88,7 +88,7 @@
                 "option_long"           : "output-log-file",
                 "option_required"       : false,
                 "option_sample_value"   : "output-log-file-name"
-            },
+            }
         },
         "mover": {
             "i": {
