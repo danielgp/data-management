@@ -2,12 +2,10 @@
 Facilitates filtering CSV files based on a carefully constructed JSON expression
 """
 import ast
-# package to facilitate operating system operations
-import os
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from data_management.BasicNeeds import BasicNeeds
+from data_management.BasicNeeds import os, BasicNeeds
 from data_management.CommandLineArgumentsManagement import CommandLineArgumentsManagement
 from data_management.LoggingNeeds import LoggingNeeds
 from data_management.DataManipulator import DataManipulator

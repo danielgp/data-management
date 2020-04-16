@@ -1,12 +1,10 @@
 """
 Facilitates merging multiple CSV files into a consolidated CSV
 """
-# package to facilitate operating system operations
-import os
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from data_management.BasicNeeds import BasicNeeds
+from data_management.BasicNeedsForMerger import os, BasicNeeds, BasicNeedsForMerger
 from data_management.CommandLineArgumentsManagement import CommandLineArgumentsManagement
 from data_management.LoggingNeeds import LoggingNeeds
 from data_management.DataManipulator import DataManipulator
@@ -25,6 +23,10 @@ if __name__ == '__main__':
     parameters_in = c_clam.parse_arguments(c_bn.cfg_dtls['input_options']['merger'])
     # checking inputs, if anything is invalid an exit(1) will take place
     c_bn.fn_check_inputs(parameters_in, current_script_name)
+    # instantiate Extractor Specific Needs class
+    c_bnfm = BasicNeedsForMerger()
+    # checking inputs, if anything is invalid an exit(1) will take place
+    c_bnfm.fn_check_inputs_specific(parameters_in)
     # instantiate Logger class
     c_ln = LoggingNeeds()
     # initiate logger
