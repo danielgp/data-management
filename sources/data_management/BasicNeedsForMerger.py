@@ -4,10 +4,10 @@ Class Merger Specific Needs
 Handling specific needs for Merger script
 """
 # package to facilitate common operations
-from data_management.BasicNeeds import os, BasicNeeds
+from common.BasicNeeds import os, BasicNeeds
 
 
-class BasicNeedsForMerger:
+class BasicNeedsForMerger():
     lcl_bn = None
 
     def __init__(self):
