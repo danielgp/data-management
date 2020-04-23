@@ -6,25 +6,29 @@ import ast
 # useful methods to measure time performance by small pieces of code
 from codetiming import Timer
 # Custom classes specific to this package
-from data_management.BasicNeeds import os, BasicNeeds
-from data_management.CommandLineArgumentsManagement import CommandLineArgumentsManagement
-from data_management.LoggingNeeds import LoggingNeeds
-from data_management.DataManipulator import DataManipulator
-
+from common.FileOperations import FileOperations
+from common.BasicNeeds import os, BasicNeeds
+from common.CommandLineArgumentsManagement import CommandLineArgumentsManagement
+from common.LoggingNeeds import LoggingNeeds
+from common.DataManipulator import DataManipulator
 # get current script name
-current_script_name = os.path.basename(__file__).replace('.py', '')
+CURRENT_SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
 
 # main execution logic
 if __name__ == '__main__':
-    # instantiate Basic Needs class
-    c_bn = BasicNeeds()
+    # instantiate File Operations class
+    c_fo = FileOperations()
     # load application configuration (inputs are defined into a json file)
-    c_bn.fn_load_configuration()
+    crt_folder = os.path.dirname(__file__)
+    configuration_file = os.path.join(crt_folder, 'config/data-management.json').replace('\\', '/')
+    configuration_details = c_fo.fn_open_file_and_get_content(configuration_file)
     # instantiate Command Line Arguments class
     c_clam = CommandLineArgumentsManagement()
-    parameters_in = c_clam.parse_arguments(c_bn.cfg_dtls['input_options']['columns_eliminator'])
+    parameters_in = c_clam.parse_arguments(configuration_details['input_options']['columns_eliminator'])
+    # instantiate Basic Needs class
+    c_bn = BasicNeeds()
     # checking inputs, if anything is invalid an exit(1) will take place
-    c_bn.fn_check_inputs(parameters_in, current_script_name)
+    c_bn.fn_check_inputs(parameters_in)
     # instantiate Logger class
     c_ln = LoggingNeeds()
     # initiate logger
@@ -33,14 +37,14 @@ if __name__ == '__main__':
     t = Timer('dm_columns_eliminator', text='Time spent is {seconds} ', logger=c_ln.logger.debug)
     # reflect title and input parameters given values in the log
     c_clam.listing_parameter_values(c_ln.logger, t, 'Filter',
-                                    c_bn.cfg_dtls['input_options']['columns_eliminator'],
+                                    configuration_details['input_options']['columns_eliminator'],
                                     parameters_in)
     # instantiate Basic Needs class
     c_dm = DataManipulator()
     # identify relevant files to work with
-    relevant_files = c_dm.build_file_list(c_ln.logger, t, parameters_in.input_file)
+    relevant_files = c_fo.build_file_list(c_ln.logger, t, parameters_in.input_file)
     # store statistics about input files
-    c_bn.fn_store_file_statistics(c_ln.logger, t, relevant_files, 'Input')
+    c_fo.fn_store_file_statistics(c_ln.logger, t, relevant_files, 'Input')
     # build relevant filter dictionary based on an input JSON expression
     relevant_filters = ast.literal_eval(parameters_in.columns_to_eliminate_expression)
     # actual drop of the columns for each individual file
@@ -50,7 +54,7 @@ if __name__ == '__main__':
         'csv_field_separator': parameters_in.csv_field_separator,
     })
     # store statistics about output file
-    c_bn.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
+    c_fo.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file,
                           t.timers.total('dm_columns_eliminator'))
