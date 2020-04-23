@@ -24,7 +24,8 @@ if __name__ == '__main__':
     configuration_details = c_fo.fn_open_file_and_get_content(configuration_file)
     # instantiate Command Line Arguments class
     c_clam = CommandLineArgumentsManagement()
-    parameters_in = c_clam.parse_arguments(configuration_details['input_options']['columns_eliminator'])
+    parameters_in = \
+        c_clam.parse_arguments(configuration_details['input_options'][CURRENT_SCRIPT_NAME])
     # instantiate Basic Needs class
     c_bn = BasicNeeds()
     # checking inputs, if anything is invalid an exit(1) will take place
@@ -32,12 +33,13 @@ if __name__ == '__main__':
     # instantiate Logger class
     c_ln = LoggingNeeds()
     # initiate logger
-    c_ln.initiate_logger(parameters_in.output_log_file, 'dm_columns_eliminator')
+    c_ln.initiate_logger(parameters_in.output_log_file, 'dm_' + CURRENT_SCRIPT_NAME)
     # define global timer to use
-    t = Timer('dm_columns_eliminator', text='Time spent is {seconds} ', logger=c_ln.logger.debug)
+    t = Timer('dm_' + CURRENT_SCRIPT_NAME, text='Time spent is {seconds} ',
+              logger=c_ln.logger.debug)
     # reflect title and input parameters given values in the log
     c_clam.listing_parameter_values(c_ln.logger, t, 'Filter',
-                                    configuration_details['input_options']['columns_eliminator'],
+                                    configuration_details['input_options'][CURRENT_SCRIPT_NAME],
                                     parameters_in)
     # instantiate Basic Needs class
     c_dm = DataManipulator()
@@ -57,4 +59,4 @@ if __name__ == '__main__':
     c_fo.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file,
-                          t.timers.total('dm_columns_eliminator'))
+                          t.timers.total('dm_' + CURRENT_SCRIPT_NAME))
