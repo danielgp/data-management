@@ -33,8 +33,8 @@ setup(
     description='Wrapper to ease data management into Tableau Hyper format from CSV files',
     include_package_data=True,
     install_requires=[
-        'codetiming>=1.1,<=1.2',
-        'pandas>=0.25.3,<=1.0.3'
+        'codetiming>=1.1,<=2.0',
+        'pandas>=0.25.3,<=1.1'
     ],
     keywords=[
         'csv'
