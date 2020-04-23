@@ -53,7 +53,7 @@ Once the package is installed is quite important to keep up with latest releases
 ## Usage
 
 
-### Columns Eliminator 
+### Columns Eliminator
 ```
     $ <local_path_of_this_package>/virtual_environment/Scripts/python(.exe) <local_path_of_this_package>/sources/columns_eliminator.py --input-file <input_file_name__specific_or_with_pattern> --csv-field-separator ","|";"|"|" --columns-to-eliminate-expression <json_list_of_columns_to_eliminate> (--output-log-file <full_path_and_file_name_to_log_running_details>)
 ```
