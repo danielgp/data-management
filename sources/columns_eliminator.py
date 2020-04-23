@@ -49,14 +49,23 @@ if __name__ == '__main__':
     c_fo.fn_store_file_statistics(c_ln.logger, t, relevant_files, 'Input')
     # build relevant filter dictionary based on an input JSON expression
     relevant_filters = ast.literal_eval(parameters_in.columns_to_eliminate_expression)
-    # actual drop of the columns for each individual file
-    resulted_data_frame = c_dm.fn_drop_certain_columns(c_ln.logger, t, {
-        'files': relevant_files,
-        'columns_to_eliminate': relevant_filters,
-        'csv_field_separator': parameters_in.csv_field_separator,
-    })
-    # store statistics about output file
-    c_fo.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_log_file, 'Generated')
+    for current_file in relevant_files:
+        # load all relevant files into a single data frame
+        df = c_dm.fn_load_file_list_to_data_frame(c_ln.logger, t, [current_file],
+                                                  parameters_in.csv_field_separator)
+        save_necessary = False
+        for column_to_eliminate in relevant_filters:
+            if column_to_eliminate in df:
+                df.drop(columns=column_to_eliminate, inplace=True)
+                save_necessary = True
+        if save_necessary:
+            c_dm.fn_store_data_frame_to_file(c_ln.logger, t, df, {
+                'field_delimiter': parameters_in.csv_field_separator,
+                'format': 'csv',
+                'name': current_file,
+            })
+            # store statistics about output file
+            c_fo.fn_store_file_statistics(c_ln.logger, t, current_file, 'Generated')
     # just final message
     c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file,
                           t.timers.total('dm_' + CURRENT_SCRIPT_NAME))

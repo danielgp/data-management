@@ -137,23 +137,6 @@ class DataManipulator:
             removal_needed = True
         return removal_needed
 
-    def fn_drop_certain_columns(self, local_logger, timmer, working_dictionary):
-        for current_file in working_dictionary['files']:
-            # load all relevant files into a single data frame
-            df = self.fn_load_file_list_to_data_frame(local_logger, timmer, [current_file],
-                                                      working_dictionary['csv_field_separator'])
-            save_necessary = False
-            for column_to_eliminate in working_dictionary['columns_to_eliminate']:
-                if column_to_eliminate in df:
-                    df.drop(columns=column_to_eliminate, inplace=True)
-                    save_necessary = True
-            if save_necessary:
-                self.fn_store_data_frame_to_file(local_logger, timmer, df, {
-                    'field-delimiter': working_dictionary['csv_field_separator'],
-                    'format': 'csv',
-                    'name': current_file,
-                })
-
     @staticmethod
     def fn_filter_data_frame_by_index(local_logger, in_data_frame, filter_rule):
         index_current = in_data_frame.query('`Timeline Evaluation` == "Current"', inplace=False)
@@ -200,7 +183,7 @@ class DataManipulator:
         timmer.start()
         if input_file_details['format'] == 'csv':
             input_data_frame.to_csv(path_or_buf=input_file_details['name'],
-                                    sep=input_file_details['field-delimiter'],
+                                    sep=input_file_details['field_delimiter'],
                                     header=True,
                                     index=False,
                                     encoding='utf-8')
