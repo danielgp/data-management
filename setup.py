@@ -57,5 +57,5 @@ setup(
     },
     python_requires='>=3.6',
     url=this_package_website + '/releases',  # project home page, if any
-    version='0.4.3',
+    version='0.4.4',
 )
