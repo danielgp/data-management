@@ -43,7 +43,7 @@ setup(
     long_description=long_description_readme,
     long_description_content_type='text/markdown',
     name='data-management',
-    packages=find_packages('data_management'),
+    packages=find_packages('common', 'data_management'),
     package_data={
         'data_management': [
             '*.json'
@@ -57,5 +57,5 @@ setup(
     },
     python_requires='>=3.6',
     url=this_package_website + '/releases',  # project home page, if any
-    version='0.4.4',
+    version='0.4.5',
 )

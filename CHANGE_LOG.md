@@ -1,6 +1,9 @@
 # Change Log for Data Management package
 
 
+## Version 0.4.5 release on 2020-04-25
+- minor internal code reworked;
+
 ## Version 0.4.4 release on 2020-04-24
 - internal code re-organizations;
 
