@@ -49,23 +49,51 @@ class DataManipulator:
     def add_value_to_dictionary(self, in_list, adding_value, adding_type, reference_column):
         add_type = adding_type.lower()
         total_columns = len(in_list)
-        if add_type == 'last':
-            position_to_cycle_down_to = total_columns
-            position_to_add = total_columns
-        elif add_type == 'first':
-            position_to_cycle_down_to = 0
-            position_to_add = position_to_cycle_down_to
-        elif add_type == 'after':
-            position_to_cycle_down_to = in_list.index(reference_column)
-            position_to_add = position_to_cycle_down_to + 1
-        elif add_type == 'before':
-            position_to_cycle_down_to = in_list.index(reference_column) - 1
-            position_to_add = position_to_cycle_down_to + 1
+        if reference_column is None:
+            reference_indexes = {
+                'add': {
+                    'after': 0,
+                    'before': 0,
+                },
+                'cycle_down_to': {
+                    'after': 0,
+                    'before': 0,
+                },
+            }
+        else:
+            reference_indexes = {
+                'add': {
+                    'after': in_list.copy().index(reference_column) + 1,
+                    'before': in_list.copy().index(reference_column),
+                },
+                'cycle_down_to': {
+                    'after': in_list.copy().index(reference_column),
+                    'before': in_list.copy().index(reference_column),
+                },
+            }
+        positions = {
+            'after': {
+                'cycle_down_to': reference_indexes.get('cycle_down_to').get('after'),
+                'add': reference_indexes.get('add').get('after'),
+            },
+            'before': {
+                'cycle_down_to': reference_indexes.get('cycle_down_to').get('before'),
+                'add': reference_indexes.get('add').get('before'),
+            },
+            'first': {
+                'cycle_down_to': 0,
+                'add': 0,
+            },
+            'last': {
+                'cycle_down_to': total_columns,
+                'add': total_columns,
+            }
+        }
         return self.add_value_to_dictionary_by_position({
             'adding_value': adding_value,
             'list': in_list,
-            'position_to_add': position_to_add,
-            'position_to_cycle_down_to': position_to_cycle_down_to,
+            'position_to_add': positions.get(add_type).get('add'),
+            'position_to_cycle_down_to': positions.get(add_type).get('cycle_down_to'),
             'total_columns': total_columns,
         })
 
