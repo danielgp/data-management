@@ -4,7 +4,7 @@ Class Mover Specific Needs
 Handling specific needs for Mover script
 """
 # package to facilitate common operations
-from data_management.BasicNeeds import os, BasicNeeds
+from common.BasicNeeds import os, BasicNeeds
 
 
 class BasicNeedsForMover:

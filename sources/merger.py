@@ -21,10 +21,10 @@ if __name__ == '__main__':
     crt_folder = os.path.dirname(__file__)
     configuration_file = os.path.join(crt_folder, 'config/data-management.json').replace('\\', '/')
     configuration_details = c_fo.fn_open_file_and_get_content(configuration_file)
+    input_options = configuration_details['input_options'][CURRENT_SCRIPT_NAME]
     # instantiate Command Line Arguments class
     c_clam = CommandLineArgumentsManagement()
-    parameters_in = c_clam.parse_arguments(configuration_details['input_options']['merger'])
-    input_options = configuration_details['input_options'][CURRENT_SCRIPT_NAME]
+    parameters_in = c_clam.parse_arguments(input_options)
     # instantiate Basic Needs class
     c_bn = BasicNeeds()
     # checking inputs, if anything is invalid an exit(1) will take place
@@ -60,4 +60,5 @@ if __name__ == '__main__':
     # store statistics about output file
     c_fo.fn_store_file_statistics(c_ln.logger, t, parameters_in.output_file, 'Generated')
     # just final message
-    c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file, t.timers.total('dm_merger'))
+    c_bn.fn_final_message(c_ln.logger, parameters_in.output_log_file,
+                          t.timers.total('dm_' + CURRENT_SCRIPT_NAME))
